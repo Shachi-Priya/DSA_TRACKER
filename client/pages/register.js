@@ -3,6 +3,7 @@ import { useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/router";
 import jwt from "jsonwebtoken";
+import Link from "next/link";
 
 
 axios.defaults.withCredentials = true; // always send cookies
@@ -108,9 +109,7 @@ export default function Register() {
 
           <p className="text-sm mt-4 text-center">
             Already have an account?{" "}
-            <a href="/login" className="text-emerald-600 hover:underline">
-              Login
-            </a>
+            <Link href="/login" className="text-emerald-600 hover:underline">Login</Link>
           </p>
         </form>
       </div>
