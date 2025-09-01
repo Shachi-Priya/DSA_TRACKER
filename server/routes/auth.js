@@ -36,6 +36,7 @@ router.post("/register", async (req, res) => {
 
 // Login
 router.post("/login", async (req, res) => {
+  console.log("login req.body::", req.body);
   const { email, password } = req.body;
   try {
     const user = await User.findOne({ email });
@@ -47,6 +48,8 @@ router.post("/login", async (req, res) => {
     const token = jwt.sign({ id: user.id, email: user.email }, process.env.JWT_SECRET, {
       expiresIn: "7d",
     });
+
+    console.log("login process.env.NODE_ENV::", process.env.NODE_ENV)
 
     res.cookie("token", token, {
       httpOnly: true,
